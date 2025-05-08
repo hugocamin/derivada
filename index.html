@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Derivadas</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+</head>
+<body>
+
+  <h2>Calculadora de Derivadas</h2>
+
+  <label for="expressao">Expressão (ex: x^2+x^5 ):</label>
+  <input type="text" id="expressao" placeholder="Digite a função, ex: x^3 - 3*x">
+
+  <button id="botao-calcular">Calcular</button>
+
+  <div class="output">
+    <p><strong>Função Original (f(x)):</strong> <span id="funcao-original"></span></p>
+    <p><strong>Primeira Derivada (f'(x)):</strong> <span id="derivada1"></span></p>
+    <p><strong>Segunda Derivada (f''(x)):</strong> <span id="derivada2"></span></p>
+    <p><strong>Pontos Críticos e Classificação:</strong></p>
+    <div id="pontos-criticos" class="critical-points-display"></div>
+    </div>
+
+  <h3>Exemplos de Funções</h3>
+  <ul class="examples">
+    <li><code>x^2</code></li>
+    <li><code>x^3 - 3*x</code></li>
+    <li><code>e^x</code></li>
+    <li><code>2*x^4 - x^2</code></li>
+  </ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
