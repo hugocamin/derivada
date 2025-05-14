@@ -6,6 +6,13 @@
   <title>Calculadora de Derivadas</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };  
+  </script>
 </head>
 <body>
 
@@ -31,7 +38,9 @@
     <li><code>e^x</code></li>
     <li><code>2*x^4 - x^2</code></li>
   </ul>
-
+<footer>
+  <label for="expressao">FATEC CAMPINAS - CALCULO I - PROGRAMAÇÃO EM SCRIPTS</label>
+</footer>
   <script src="script.js"></script>
 </body>
 </html>

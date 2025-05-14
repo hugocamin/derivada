@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function encontrarPontosCriticosComNewton(expressaoPrimeiraDerivada, expressaoSegundaDerivada, estimativasIniciais = [-10, -5, -2, -1, -0.5, 0, 0.5, 1, 2, 5, 10], tolerancia = 1e-7, maxIteracoes = 100) {
+    function encontrarPontosCriticosComNewton(expressaoPrimeiraDerivada, expressaoSegundaDerivada, estimativasIniciais = [-10, -5, -2, -1, -0.5, 0, 0.5, 1, 2, 5, 10], tolerancia = 1e-7, maxIteracoes = 50) {
         const pontosCriticos = new Set();
         const escopo = {};
 
@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function encontrarEClassificarPontosCriticos(expressaoOriginalStr, primeiraDerivadaStr, segundaDerivadaStr) {
-        // Se a derivada é sempre positiva ou negativa (ex: e^x), não há pontos críticos
         if (primeiraDerivadaStr === expressaoOriginalStr && segundaDerivadaStr === expressaoOriginalStr) {
             return 'Nenhum ponto crítico (onde f\'(x) ≈ 0) encontrado com as estimativas atuais.';
         }
@@ -122,13 +121,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         try {
             const noExpressao = math.parse(expressaoStr);
-            funcaoOriginalDisplay.textContent = noExpressao.toString();
+            funcaoOriginalDisplay.innerHTML = `\\( ${noExpressao.toTex()} \\)`;
 
             const noPrimeiraDerivada = math.derivative(noExpressao, 'x');
-            primeiraDerivadaDisplay.textContent = noPrimeiraDerivada.toString();
+            primeiraDerivadaDisplay.innerHTML = `\\( ${noPrimeiraDerivada.toTex()} \\)`;
 
             const noSegundaDerivada = math.derivative(noPrimeiraDerivada, 'x');
-            segundaDerivadaDisplay.textContent = noSegundaDerivada.toString();
+            segundaDerivadaDisplay.innerHTML = `\\( ${noSegundaDerivada.toTex()} \\)`;
 
             const infoPontosCriticos = encontrarEClassificarPontosCriticos(
                 noExpressao.toString(),
@@ -136,6 +135,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 noSegundaDerivada.toString()
             );
             pontosCriticosDisplay.innerHTML = infoPontosCriticos;
+
+            if (window.MathJax && MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+            
 
         } catch (e) {
             mostrarErro('Erro: ' + e.message, funcaoOriginalDisplay);
