@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return formatada;
     }
 
-    // --- Calculadora de Derivadas: Lógica Principal ---
+    // --- Calculadora de Derivadas ---
     function encontrarPontosCriticosComNewton(expressaoPrimeiraDerivada, expressaoSegundaDerivada, estimativasIniciais = [-10, -5, -2, -1, -0.5, 0, 0.5, 1, 2, 5, 10], tolerancia = 1e-7, maxIteracoes = 50) {
         const pontosCriticos = new Set();
         const escopo = {};
@@ -189,10 +189,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const botaoCalcularIntegral = document.getElementById('botao-calcular-integral');
     const funcaoIntegralDisplay = document.getElementById('funcao-integral-display');
     const resultadoIntegralDisplay = document.getElementById('resultado-integral');
-    const canvasGraficoIntegral = document.getElementById('graficoIntegral'); // NOVO
-    let graficoIntegralChart = null; // NOVO: Guarda a instância do gráfico
+    const canvasGraficoIntegral = document.getElementById('graficoIntegral');
+    let graficoIntegralChart = null; // 
 
-    // MODIFICADO: Limpa o gráfico em caso de erro
+    // Limpa o gráfico em caso de erro
     function mostrarErroIntegral(mensagem, elementoDisplay) {
         elementoDisplay.innerHTML = `<span class="error">${mensagem}</span>`;
         if (elementoDisplay === funcaoIntegralDisplay) {
@@ -220,17 +220,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return (h / 2) * soma;
     }
 
-    // NOVO: Função para plotar o gráfico da integral
+    // Função para plotar o gráfico da integral
     function plotarGraficoIntegral(funcaoNodeStr, a, b, n) {
         if (graficoIntegralChart) {
-            graficoIntegralChart.destroy(); // Destrói o gráfico anterior para redesenhar
+            graficoIntegralChart.destroy(); // Refaz o grafico se já existir
         }
         if (!canvasGraficoIntegral) return;
 
         const compiledFunc = math.compile(funcaoNodeStr);
         const escopo = {};
 
-        // 1. Gera pontos para a curva da função (mais pontos para uma linha suave)
+        // Gera pontos para a curva da função 
         const pontosCurva = [];
         const numPontosCurva = Math.max(400, n);
         const stepCurva = (b - a) / numPontosCurva;
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } catch (e) { /* Ignora pontos indefinidos */ }
         }
 
-        // 2. Gera pontos para a área sob a curva (baseado nos trapézios)
+        // Gera pontos para a área sob a curva
         const pontosArea = [];
         const h = (b - a) / n;
         for (let i = 0; i <= n; i++) {
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 datasets: [{
                     label: 'Área da Integral',
                     data: pontosArea,
-                    fill: 'origin', // Preenche a área do eixo x ('origin') até a linha
+                    fill: 'origin', 
                     backgroundColor: 'rgba(52, 152, 219, 0.3)',
                     borderColor: 'rgba(52, 152, 219, 0.6)',
                     pointRadius: 0,
@@ -274,11 +274,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, {
                     label: 'f(x)',
                     data: pontosCurva,
-                    borderColor: '#c0392b', // Vermelho para destacar a função
+                    borderColor: '#c0392b', 
                     backgroundColor: 'transparent',
                     borderWidth: 2.5,
                     pointRadius: 0,
-                    tension: 0.1 // Suaviza a curva
+                    tension: 0.1 
                 }]
             },
             options: {
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // MODIFICADO: Função para calcular e agora também exibir o gráfico
+    // Função para calcular e também exibir o gráfico
     function calcularEExibirIntegral() {
         if (!funcaoIntegralDisplay || !resultadoIntegralDisplay) return;
 
@@ -356,7 +356,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 mostrarErroIntegral('Não foi possível calcular a integral (resultado NaN). Verifique a função e os limites.', resultadoIntegralDisplay);
             } else {
                 resultadoIntegralDisplay.innerHTML += `\\( \\approx ${formatarNumero(resultado)} \\)`;
-                // NOVO: Chamar a função para plotar o gráfico
                 plotarGraficoIntegral(noFuncaoIntegral.toString(), a, b, Math.min(n, 500)); // Limita n para a plotagem para não sobrecarregar
             }
 
