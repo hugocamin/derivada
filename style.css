@@ -1,79 +1,78 @@
 body {
-  font-family: 'Inter', sans-serif;
-  max-width: 700px;
-  margin: 20px auto;
-  padding: 25px;
-  background-color: #f4f7f9;
-  color: #333;
-  line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
 }
 
 h2, h3 {
-  color: #2c3e50;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 5px;
-  margin-bottom: 15px;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 label {
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #555;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
 }
 
 input[type="text"], input[type="number"], button {
-  padding: 12px;
-  font-size: 14px;
-  margin-top: 5px;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 12px;
+    font-size: 14px;
+    margin-top: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="text"]:focus, input[type="number"]:focus, button:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-  outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
 }
 
-/* Botões específicos com fundo azul */
 #botao-calcular, #botao-calcular-integral {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
 }
 
 #botao-calcular:hover, #botao-calcular-integral:hover {
-  background-color: #2980b9;
+    background-color: #2980b9;
 }
 
 .output {
-  margin-top: 25px;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .output p {
-  margin: 8px 0;
-  font-size: 1em;
+    margin: 8px 0;
+    font-size: 1em;
 }
 
 .output strong {
-  color: #2c3e50;
+    color: #2c3e50;
 }
 
 .error {
-  color: #e74c3c;
-  font-weight: bold;
+    color: #e74c3c;
+    font-weight: bold;
 }
 
 .critical-points-display {
@@ -84,93 +83,105 @@ input[type="text"]:focus, input[type="number"]:focus, button:focus {
 }
 
 .examples, .examples-integral {
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
 }
 
 .examples li, .examples-integral li {
-  display: inline-block;
-  margin-right: 10px;
-  margin-bottom: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .examples code, .examples-integral code {
-  background-color: #e9ecef;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #007bff;
-  transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #007bff;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .examples code:hover, .examples-integral code:hover {
-  background-color: #d0d9e0;
-  color: #0056b3;
+    background-color: #d0d9e0;
+    color: #0056b3;
 }
 
-/* Estilos para as Abas */
 .tab-container {
-  display: flex;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  overflow: hidden;
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .tab-button {
-  flex-grow: 1;
-  padding: 12px 15px;
-  font-size: 16px;
-  text-align: center;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  color: #555;
-  border: none;
-  border-right: 1px solid #ddd;
-  outline: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  width: auto; /* Sobrescreve o width: 100% do seletor geral 'button' */
-  margin-top: 0; /* Sobrescreve o margin-top do seletor geral 'button' */
+    flex-grow: 1;
+    padding: 12px 15px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: #555;
+    border: none;
+    border-right: 1px solid #ddd;
+    outline: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: auto;
+    margin-top: 0;
 }
 
 .tab-button:last-child {
-  border-right: none;
+    border-right: none;
 }
 
 .tab-button:hover:not(.active) {
-  background-color: #e0e0e0;
+    background-color: #e0e0e0;
 }
 
 .tab-button.active {
-  background-color: #3498db;
-  color: white;
-  font-weight: bold;
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
 }
 
 .tab-content {
-  display: none;
+    display: none;
 }
 
 .tab-content.active {
-  display: block;
+    display: block;
 }
 
 .tab-content h2 {
-  margin-top: 0;
+    margin-top: 0;
 }
 
-/* Responsividade básica */
-@media (max-width: 600px) {
-  body {
-    margin: 10px;
+/* ADICIONADO: Estilo para o container do gráfico */
+.chart-container {
+    position: relative;
+    height: 45vh;
+    min-height: 350px;
+    width: 100%;
+    margin-top: 25px;
     padding: 15px;
-  }
-  input[type="text"], input[type="number"], button, #botao-calcular, #botao-calcular-integral {
-    font-size: 15px;
-  }
-  .tab-button {
-    font-size: 14px;
-    padding: 10px 8px;
-  }
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+        padding: 15px;
+    }
+    input[type="text"], input[type="number"], button, #botao-calcular, #botao-calcular-integral {
+        font-size: 15px;
+    }
+    .tab-button {
+        font-size: 14px;
+        padding: 10px 8px;
+    }
 }

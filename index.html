@@ -1,85 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de Derivadas e Integrais</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Derivadas e Integrais</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
 </head>
 <body>
 
-  <div class="tab-container">
-    <button class="tab-button active" data-tab="derivadas">Derivadas</button>
-    <button class="tab-button" data-tab="integrais">Integrais</button>
-  </div>
-
-  <div id="content-derivadas" class="tab-content active">
-    <h2>Calculadora de Derivadas</h2>
-
-    <label for="expressao">Expressão (ex: x^2+x^5 ):</label>
-    <input type="text" id="expressao" placeholder="Digite a função, ex: x^3 - 3*x">
-
-    <button id="botao-calcular">Calcular Derivadas</button>
-
-    <div class="output">
-      <p><strong>Função Original (f(x)):</strong> <span id="funcao-original"></span></p>
-      <p><strong>Primeira Derivada (f'(x)):</strong> <span id="derivada1"></span></p>
-      <p><strong>Segunda Derivada (f''(x)):</strong> <span id="derivada2"></span></p>
-      <p><strong>Pontos Críticos e Classificação:</strong></p>
-      <div id="pontos-criticos" class="critical-points-display"></div>
+    <div class="tab-container">
+        <button class="tab-button active" data-tab="derivadas">Derivadas</button>
+        <button class="tab-button" data-tab="integrais">Integrais</button>
     </div>
 
-    <h3>Exemplos de Funções para Derivadas</h3>
-    <ul class="examples">
-      <li><code>x^2</code></li>
-      <li><code>x^3 - 3*x</code></li>
-      <li><code>e^x</code></li>
-      <li><code>2*x^4 - x^2</code></li>
-    </ul>
-  </div>
+    <div id="content-derivadas" class="tab-content active">
+        <h2>Calculadora de Derivadas</h2>
 
-  <div id="content-integrais" class="tab-content">
-    <h2>Calculadora de Integrais (Método do Trapézio)</h2>
+        <label for="expressao">Expressão (ex: x^2+x^5 ):</label>
+        <input type="text" id="expressao" placeholder="Digite a função, ex: x^3 - 3*x">
 
-    <label for="expressao-integral">Função f(x) (ex: x^2):</label>
-    <input type="text" id="expressao-integral" placeholder="Digite a função, ex: x^2">
+        <button id="botao-calcular">Calcular Derivadas</button>
 
-    <label for="limite-inferior">Limite Inferior (a):</label>
-    <input type="number" id="limite-inferior" placeholder="Ex: 0">
+        <div class="output">
+            <p><strong>Função Original (f(x)):</strong> <span id="funcao-original"></span></p>
+            <p><strong>Primeira Derivada (f'(x)):</strong> <span id="derivada1"></span></p>
+            <p><strong>Segunda Derivada (f''(x)):</strong> <span id="derivada2"></span></p>
+            <p><strong>Pontos Críticos e Classificação:</strong></p>
+            <div id="pontos-criticos" class="critical-points-display"></div>
+        </div>
 
-    <label for="limite-superior">Limite Superior (b):</label>
-    <input type="number" id="limite-superior" placeholder="Ex: 1">
-
-    <label for="numero-trapezios">Número de Trapézios (n):</label>
-    <input type="number" id="numero-trapezios" value="1000" placeholder="Ex: 100 (maior = mais preciso)">
-
-    <button id="botao-calcular-integral">Calcular Integral</button>
-
-    <div class="output">
-      <p><strong>Função a ser integrada (f(x)):</strong> <span id="funcao-integral-display"></span></p>
-      <p><strong>Resultado da Integral (∫ f(x)dx de a até b):</strong> <span id="resultado-integral"></span></p>
+        <h3>Exemplos de Funções para Derivadas</h3>
+        <ul class="examples">
+            <li><code>x^2</code></li>
+            <li><code>x^3 - 3*x</code></li>
+            <li><code>e^x</code></li>
+            <li><code>2*x^4 - x^2</code></li>
+        </ul>
     </div>
 
-    <h3>Exemplos de Funções para Integração</h3>
-    <ul class="examples-integral">
-      <li><code data-func="x^2" data-a="0" data-b="1" data-n="1000">∫ x^2 dx de 0 a 1</code></li>
-      <li><code data-func="sin(x)" data-a="0" data-b="pi" data-n="1000">∫ sin(x) dx de 0 a π</code></li>
-      <li><code data-func="1/x" data-a="1" data-b="e" data-n="1000">∫ 1/x dx de 1 a e</code></li>
-    </ul>
-  </div>
+    <div id="content-integrais" class="tab-content">
+        <h2>Calculadora de Integrais Definidas</h2>
 
-  <footer>
-    <label>FATEC CAMPINAS - CALCULO I - PROGRAMAÇÃO EM SCRIPTS</label>
-  </footer>
+        <label for="expressao-integral">Função f(x) (ex: x^2):</label>
+        <input type="text" id="expressao-integral" placeholder="Digite a função, ex: x^2">
 
-  <script src="script.js"></script>
+        <label for="limite-inferior">Limite Inferior (a):</label>
+        <input type="number" id="limite-inferior" placeholder="Ex: 0">
+
+        <label for="limite-superior">Limite Superior (b):</label>
+        <input type="number" id="limite-superior" placeholder="Ex: 1">
+
+        <label for="numero-trapezios">Número de Trapézios (n):</label>
+        <input type="number" id="numero-trapezios" value="1000" placeholder="Ex: 100 (maior = mais preciso)">
+
+        <button id="botao-calcular-integral">Calcular Integral</button>
+
+        <div class="output">
+            <p><strong>Função a ser integrada (f(x)):</strong> <span id="funcao-integral-display"></span></p>
+            <p><strong>Resultado da Integral (∫ f(x)dx de a até b):</strong> <span id="resultado-integral"></span></p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="graficoIntegral"></canvas>
+        </div>
+
+        <h3>Exemplos de Funções para Integração</h3>
+        <ul class="examples-integral">
+            <li><code data-func="x^2" data-a="0" data-b="1" data-n="1000">∫ x^2 dx de 0 a 1</code></li>
+            <li><code data-func="x^3 - 3*x" data-a="0" data-b="pi" data-n="1000">∫ x^3 - 3*x dx de 0 a π</code></li>
+            <li><code data-func="1/x" data-a="1" data-b="e" data-n="1000">∫ 1/x dx de 1 a e</code></li>
+        </ul>
+    </div>
+
+    <footer>
+        <label>FATEC CAMPINAS - CALCULO I - PROGRAMAÇÃO EM SCRIPTS</label>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
