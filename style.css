@@ -1,187 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-color: #eef1f5;
+    --main-bg-color: #ffffff;
+    --primary-color: #6a82fb;
+    --primary-color-dark: #5a72e9;
+    --secondary-color: #f7797d;
+    --text-color: #34495e;
+    --text-color-light: #5f7a97;
+    --border-color: #dce1e8;
+    --shadow-light: rgba(255, 255, 255, 0.9);
+    --shadow-dark: rgba(214, 221, 230, 0.7);
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+}
+
 body {
     font-family: 'Inter', sans-serif;
-    max-width: 700px;
-    margin: 20px auto;
-    padding: 25px;
-    background-color: #f4f7f9;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    max-width: 750px;
+    margin: 2rem auto;
+    padding: 2rem;
     line-height: 1.6;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #f9f9f9, #e6e6e6);
+    box-shadow: 20px 20px 60px #d5d5d5, -20px -20px 60px #ffffff;
 }
 
 h2, h3 {
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.1rem;
+    border-bottom: none;
+    margin-top: 30px;
 }
 
 label {
     display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color-light);
 }
 
-input[type="text"], input[type="number"], button {
-    padding: 12px;
-    font-size: 14px;
-    margin-top: 5px;
+input[type="text"], input[type="number"] {
+    padding: 15px;
+    font-size: 1rem;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: inset 5px 5px 10px #d8dbe0, inset -5px -5px 10px #ffffff;
 }
 
-input[type="text"]:focus, input[type="number"]:focus, button:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+input[type="text"]:focus, input[type="number"]:focus {
     outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 130, 251, 0.2), inset 2px 2px 5px #d8dbe0, inset -2px -2px 5px #ffffff;
+}
+
+button {
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 #botao-calcular, #botao-calcular-integral {
-    background-color: #3498db;
+    background: linear-gradient(145deg, var(--primary-color), var(--primary-color-dark));
     color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    margin-top: 25px;
+    box-shadow: 7px 7px 15px var(--shadow-dark), -7px -7px 15px var(--shadow-light);
 }
 
 #botao-calcular:hover, #botao-calcular-integral:hover {
-    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
 }
 
-.output {
-    margin-top: 25px;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+#botao-calcular:active, #botao-calcular-integral:active {
+    transform: translateY(1px);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+}
+
+
+.output, .chart-container {
+    margin-top: 30px;
+    padding: 5px;
+    background-color: var(--main-bg-color);
+    border-radius: 15px;
+    box-shadow: 10px 10px 25px var(--shadow-dark), -10px -10px 25px var(--shadow-light);
 }
 
 .output p {
-    margin: 8px 0;
-    font-size: 1em;
+    margin: 20px 0;
+    font-size: 1.05em;
+    color: var(--text-color-light);
 }
 
 .output strong {
-    color: #2c3e50;
+    color: var(--text-color);
+    font-weight: 600;
 }
 
 .error {
-    color: #e74c3c;
+    color: var(--error-color);
     font-weight: bold;
 }
 
 .critical-points-display {
-    padding-left: 10px;
-    border-left: 3px solid #3498db;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    padding-left: 15px;
+    border-left: 4px solid var(--success-color);
+    margin-top: 10px;
 }
 
 .examples, .examples-integral {
     list-style: none;
     padding: 0;
-    margin-top: 10px;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .examples li, .examples-integral li {
-    display: inline-block;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin: 0;
 }
 
 .examples code, .examples-integral code {
-    background-color: #e9ecef;
-    padding: 5px 10px;
-    border-radius: 4px;
+    background-color: var(--bg-color);
+    padding: 8px 15px;
+    border-radius: 8px;
     cursor: pointer;
-    color: #007bff;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid transparent;
 }
 
 .examples code:hover, .examples-integral code:hover {
-    background-color: #d0d9e0;
-    color: #0056b3;
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color-dark);
+    transform: translateY(-2px);
 }
 
 .tab-container {
     display: flex;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    overflow: hidden;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    background-color: var(--bg-color);
+    padding: 5px;
+    box-shadow: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
 }
 
 .tab-button {
-    flex-grow: 1;
-    padding: 12px 15px;
-    font-size: 16px;
+    flex: 1;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
     text-align: center;
     cursor: pointer;
-    background-color: #f0f0f0;
-    color: #555;
+    color: var(--text-color-light);
     border: none;
-    border-right: 1px solid #ddd;
-    outline: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: all 0.3s ease;
     width: auto;
-    margin-top: 0;
-}
-
-.tab-button:last-child {
-    border-right: none;
-}
-
-.tab-button:hover:not(.active) {
-    background-color: #e0e0e0;
+    margin: 0;
 }
 
 .tab-button.active {
-    background-color: #3498db;
-    color: white;
-    font-weight: bold;
+    background-color: var(--main-bg-color);
+    color: var(--primary-color);
+    box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
 }
 
-.tab-content {
-    display: none;
+.tab-button:not(.active):hover {
+    background-color: #e5e9ed;
 }
 
-.tab-content.active {
-    display: block;
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.tab-content h2 {
-    margin-top: 0;
-}
-
-/* ADICIONADO: Estilo para o container do gráfico */
 .chart-container {
-    position: relative;
-    height: 45vh;
-    min-height: 350px;
+    height: auto;
+    min-height: 400px;
     width: 100%;
-    margin-top: 25px;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    box-sizing: border-box;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text-color-light);
+    font-size: 0.9em;
 }
 
 @media (max-width: 600px) {
     body {
-        margin: 10px;
-        padding: 15px;
-    }
-    input[type="text"], input[type="number"], button, #botao-calcular, #botao-calcular-integral {
-        font-size: 15px;
+        margin: 0;
+        padding: 1rem;
+        border-radius: 0;
+        box-shadow: none;
     }
     .tab-button {
-        font-size: 14px;
-        padding: 10px 8px;
+        font-size: 0.9rem;
     }
 }
